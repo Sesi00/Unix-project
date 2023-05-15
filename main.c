@@ -98,28 +98,10 @@ int lsh_help(char **args)
 }
 
 int lsh_ls(char **args){
-    struct dirent **namelist; int n; if(argc < 1) { 
-        exit(EXIT_FAILURE); 
-    } 
-    else if (argc == 1) { 
-        n=scandir(“.”,&namelist,NULL,alphasort); 
-    } 
-    else { 
-        n = scandir(argv[1], &namelist, NULL, alphasort); 
-    } 
-    if(n < 0) { 
-        perror(“scandir”); exit(EXIT_FAILURE); 
-    }
-    else { 
-        while (n–) { 
-            printf(“%s\n”,namelist[n]->d_name);
-            free(namelist[n]); 
-        } 
-        free(namelist); 
-    } 
-    exit(EXIT_SUCCESS); 
+    char wd[1000];
+    printf("Current working directory: %s", getcwd(wd, sizeof(wd)));
 }
-
+   
 
 int lsh_sleep(char **args){
 	sleep(3);
