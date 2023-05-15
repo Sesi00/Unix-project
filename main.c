@@ -47,7 +47,7 @@ int (*builtin_func[]) (char **) = {
   &lsh_cd,
   &lsh_help,
   &lsh_exit,
-  &lsh_ls,
+  &lsh_pwd,
   &lsh_shutDown,
   &lsh_sleep
 };
