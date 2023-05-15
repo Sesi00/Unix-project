@@ -101,6 +101,11 @@ int lsh_ls(char **args){
     char wd[1000];
     printf("Current working directory: %s", getcwd(wd, sizeof(wd)));
 }
+
+int lsh_shutDown(char **args){
+	system("shutdown -P 5");
+	return 0;
+}
    
 
 int lsh_sleep(char **args){
