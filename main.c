@@ -98,25 +98,28 @@ int lsh_help(char **args)
 }
 
 int lsh_ls(char **args){
-    char dirname[10];
-    DIR*p;
-    struct dirent *d;
-    printf("Enter directory name\n");
-    scanf("%s",dirname);
-    p=opendir(dirname);
-    if(p==NULL)
-    {
-        perror("Cannot find directory");
-        exit(-1);
+    struct dirent **namelist; int n; if(argc < 1) { 
+        exit(EXIT_FAILURE); 
+    } 
+    else if (argc == 1) { 
+        n=scandir(“.”,&namelist,NULL,alphasort); 
+    } 
+    else { 
+        n = scandir(argv[1], &namelist, NULL, alphasort); 
+    } 
+    if(n < 0) { 
+        perror(“scandir”); exit(EXIT_FAILURE); 
     }
-    while(d=readdir(p))
-    printf("%s\n",d->d_name);
+    else { 
+        while (n–) { 
+            printf(“%s\n”,namelist[n]->d_name);
+            free(namelist[n]); 
+        } 
+        free(namelist); 
+    } 
+    exit(EXIT_SUCCESS); 
 }
 
-int lsh_shutDown(char **args){
-	system("shutdown -P 5");
-	return 0;
-}
 
 int lsh_sleep(char **args){
 	sleep(3);
