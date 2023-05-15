@@ -38,7 +38,7 @@ char *builtin_str[] = {
   "cd",
   "help",
   "exit",
-  "ls",
+  "pwd",
   "shutDown",
   "sleep"
 };
