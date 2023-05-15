@@ -98,20 +98,20 @@ int lsh_help(char **args)
 }
 
 int lsh_ls(char **args){
-	char dirname[10];
-  DIR*p;
-  struct dirent *d;
-  printf("Enter directory name\n");
-  scanf("%s",dirname);
-  p=opendir(dirname);
-  if(p==NULL)
+    char dirname[10];
+    DIR*p;
+    struct dirent *d;
+    printf("Enter directory name\n");
+    scanf("%s",dirname);
+    p=opendir(dirname);
+    if(p==NULL)
     {
-    perror("Cannot find directory");
-    exit(-1);
+        perror("Cannot find directory");
+        exit(-1);
     }
-  while(d=readdir(p))
+    while(d=readdir(p))
     printf("%s\n",d->d_name);
-  }
+}
 
 int lsh_shutDown(char **args){
 	system("shutdown -P 5");
