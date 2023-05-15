@@ -27,7 +27,7 @@
 int lsh_cd(char **args);
 int lsh_help(char **args);
 int lsh_exit(char **args);
-int lsh_ls(char **args);
+int lsh_pwd(char **args);
 int lsh_shutDown(char **args);
 int lsh_sleep(char **args);
 
@@ -97,7 +97,7 @@ int lsh_help(char **args)
   return 1;
 }
 
-int lsh_ls(char **args){
+int lsh_pwd(char **args){
     char wd[1000];
     printf("Current working directory: %s", getcwd(wd, sizeof(wd)));
 }
